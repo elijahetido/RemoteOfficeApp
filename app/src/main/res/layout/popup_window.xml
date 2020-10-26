@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5dp">
+
+    <Button
+        android:id="@+id/company_button"
+        android:layout_width="209dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="false"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="126dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/dialog_button"
+        android:foregroundGravity="center_horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Company"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/worker_button"
+        android:layout_width="211dp"
+        android:layout_height="64dp"
+        android:layout_alignStart="@+id/company_button"
+        android:layout_alignEnd="@+id/company_button"
+        android:layout_alignBottom="@+id/company_button"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="69dp"
+        android:background="@drawable/dialog_button"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        android:text="Remote Worker"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16dp" />
+
+</RelativeLayout>

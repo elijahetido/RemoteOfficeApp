@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.etido.elijah.remoteoffice">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/remote_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/remote_logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activities.CompanyNavDrawer"
+            android:label="@string/title_activity_company_nav_drawer"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Activities.CompanyMainActivity" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/LaunchScreenThemeBase">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.CompanySignupActivity" />
+        <activity android:name=".Activities.WorkerSignupActivity" />
+        <activity android:name=".Activities.MainActivity" />
+    </application>
+
+</manifest>

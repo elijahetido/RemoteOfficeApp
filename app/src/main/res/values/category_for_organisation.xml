@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="categories_of_organisation">
+        <item>Hospitality</item>
+        <item>Finance</item>
+    </string-array>
+
+</resources>

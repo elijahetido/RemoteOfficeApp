@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_two_light"
+    tools:context=".Activities.CompanySignupActivity">
+
+    <EditText
+        android:id="@+id/workers_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/corners_button"
+        android:ems="10"
+        android:hint="Full Name of Worker"
+        android:inputType="textPersonName"
+        android:outlineProvider="bounds"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/text_worker"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/text_worker"
+        app:layout_constraintTop_toBottomOf="@+id/text_worker" />
+
+    <TextView
+        android:id="@+id/text_worker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="2dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="4dp"
+        android:paddingBottom="8dp"
+        android:text="Sign Up as Remote Worker"
+        android:textAlignment="center"
+        android:textColor="#062378"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/include3"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/include3"
+        app:layout_constraintTop_toBottomOf="@+id/include3" />
+
+    <Spinner
+        android:id="@+id/category_worker"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/corners_button"
+        android:entries="@array/workers_skill"
+        android:paddingStart="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/workers_name"
+        app:layout_constraintStart_toStartOf="@+id/workers_name"
+        app:layout_constraintTop_toBottomOf="@+id/workers_name" />
+
+    <EditText
+        android:id="@+id/worker_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/corners_button"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/category_worker"
+        app:layout_constraintStart_toStartOf="@+id/category_worker"
+        app:layout_constraintTop_toBottomOf="@+id/category_worker" />
+
+    <EditText
+        android:id="@+id/confirm_worker_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/corners_button"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/worker_email"
+        app:layout_constraintStart_toStartOf="@+id/worker_email"
+        app:layout_constraintTop_toBottomOf="@+id/worker_email" />
+
+    <EditText
+        android:id="@+id/worker_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/corners_button"
+        android:ems="10"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/confirm_worker_password"
+        app:layout_constraintStart_toStartOf="@+id/confirm_worker_password"
+        app:layout_constraintTop_toBottomOf="@+id/confirm_worker_password" />
+
+    <Button
+        android:id="@+id/company_submit_button"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round_button"
+        android:elevation="2dp"
+        android:text="Submit"
+        android:textColor="#F4F4F4"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/worker_password"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/worker_password"
+        app:layout_constraintTop_toBottomOf="@+id/worker_password" />
+
+    <include
+        android:id="@+id/include3"
+        layout="@layout/custom_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
