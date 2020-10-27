@@ -81,7 +81,7 @@
         android:paddingBottom="8dp"
         android:text="not registered? Sign Up"
         android:textColor="#01091C"
-        android:textSize="26dp"
+        android:textSize="26sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="@+id/login_button"
         app:layout_constraintHorizontal_bias="0.487"

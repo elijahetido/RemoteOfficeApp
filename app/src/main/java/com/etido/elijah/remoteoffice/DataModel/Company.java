@@ -1,17 +1,15 @@
 package com.etido.elijah.remoteoffice.DataModel;
 
-public class CompanyModel {
-    public String id;
+public class Company {
+    public int id;
     public String companyName;
     public String category;
     public String email;
     public String password;
 
-    public String getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

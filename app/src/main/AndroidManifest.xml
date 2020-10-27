@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/remote_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activities.WorkerMainActivity"></activity>
         <activity
             android:name=".Activities.CompanyNavDrawer"
             android:label="@string/title_activity_company_nav_drawer"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.CompanyMainActivity" />
         <activity
             android:name=".SplashActivity"
@@ -25,7 +26,7 @@
         </activity>
         <activity android:name=".Activities.CompanySignupActivity" />
         <activity android:name=".Activities.WorkerSignupActivity" />
-        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.LoginActivity" />
     </application>
 
 </manifest>

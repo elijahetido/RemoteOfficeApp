@@ -6,7 +6,7 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.etido.elijah.remoteoffice.Activities.MainActivity;
+import com.etido.elijah.remoteoffice.Activities.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
     private final int SPLASH_DISPLAY_LENGTH = 5000;
@@ -15,7 +15,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         new Handler().postDelayed(() ->{
             /* Create an Intent that will start the Menu-Activity. */
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
             SplashActivity.this.startActivity(intent);
             SplashActivity.this.finish();
         }, SPLASH_DISPLAY_LENGTH);

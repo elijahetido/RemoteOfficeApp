@@ -6,13 +6,11 @@ import android.os.Bundle;
 
 import com.etido.elijah.remoteoffice.R;
 
-public class CompanySignupActivity extends AppCompatActivity {
-
+public class WorkerMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register_company);
-
+        setContentView(R.layout.activity_worker_main);
     }
 }

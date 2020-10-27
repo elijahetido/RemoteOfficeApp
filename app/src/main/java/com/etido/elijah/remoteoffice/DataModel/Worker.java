@@ -1,21 +1,35 @@
 package com.etido.elijah.remoteoffice.DataModel;
 
-public class RemoteWorkerModel {
-    public String id;
+public class Worker {
+    public int id;
     public String fullName;
     public String category;
     public String email;
+
+    public Worker() {}
+
+    public Worker(Integer id, String fullName, String category, String email, String password) {
+        this.id = id;
+        this.fullName = fullName;
+        this.category = category;
+        this.email = email;
+        this.password = password;
+    }
+
     public String password;
 
-    public String getId() {
+
+
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String fullName() {
+    public String getFullName() {
         return fullName;
     }
 
