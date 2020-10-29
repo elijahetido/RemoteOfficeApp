@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_two_light"
-    android:foregroundGravity="top">
+    android:foregroundGravity="top"
+    android:textAlignment="center">
 
     <EditText
         android:id="@+id/text_email"
@@ -50,7 +51,9 @@
         android:id="@+id/login_button"
         android:layout_width="129dp"
         android:layout_height="51dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="28dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/dialog_button"
         android:text="@string/login"
         android:textColor="#FFFFFF"
@@ -73,18 +76,35 @@
         android:id="@+id/signup_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:clickable="true"
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
-        android:text="not registered? Sign Up"
+        android:text=" Sign Up"
         android:textColor="#01091C"
-        android:textSize="26sp"
+        android:textSize="24sp"
         android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/not_registered"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/not_registered"
+        app:layout_constraintTop_toBottomOf="@+id/not_registered" />
+
+    <TextView
+        android:id="@+id/not_registered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:paddingStart="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="5dp"
+        android:paddingBottom="5dp"
+        android:text="Not Registered?"
+        android:textColor="#06216C"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/login_button"
-        app:layout_constraintHorizontal_bias="0.487"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="@+id/login_button"
         app:layout_constraintTop_toBottomOf="@+id/login_button" />
 

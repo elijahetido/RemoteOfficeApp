@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        companyWorkerDatabaseHelper = new CompanyWorkerDatabaseHelper(this);
         initializeViews();
 
         mSignUp.setOnClickListener(v -> {
@@ -59,6 +60,7 @@ public class LoginActivity extends AppCompatActivity{
             });
         });
         mLogin.setOnClickListener(v -> {
+            validate();
             verifyData();
         });
     }
@@ -86,27 +88,23 @@ public class LoginActivity extends AppCompatActivity{
     private void verifyData() {
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();
-        validate();
 
-        if(companyWorkerDatabaseHelper.checkWorker(email, password)){
-            Intent workerIntent = new Intent(LoginActivity.this, WorkerMainActivity.class);
-            clearTextFields();
-            startActivity(workerIntent);
-        } else {
-            Snackbar.make(mConstraintLayout," Login Unsuccessful",Snackbar.LENGTH_LONG).show();
-        }
-
-        if(companyWorkerDatabaseHelper.checkCompany(email, password)){
-            Intent companyIntent = new Intent(LoginActivity.this, CompanyMainActivity.class);
-            clearTextFields();
-            startActivity(companyIntent);
-        }else{
-            Snackbar.make(mConstraintLayout," Login Unsuccessful",Snackbar.LENGTH_LONG).show();
+            if(companyWorkerDatabaseHelper.checkWorker(email, password)){
+                Intent workerIntent = new Intent(LoginActivity.this, WorkerMainActivity.class);
+                clearTextFields();
+                startActivity(workerIntent);
+            } else if (companyWorkerDatabaseHelper.checkCompany(email, password)){
+                Intent companyIntent = new Intent(LoginActivity.this, CompanyMainActivity.class);
+                clearTextFields();
+                startActivity(companyIntent);
+            } else {
+                Snackbar.make(mConstraintLayout," Login Unsuccessful",Snackbar.LENGTH_LONG).show();
         }
     }
 
     public boolean validate(){
         boolean valid;
+        valid = false;
 
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();

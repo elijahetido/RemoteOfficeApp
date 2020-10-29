@@ -5,18 +5,19 @@ public class Worker {
     public String fullName;
     public String category;
     public String email;
-
-    public Worker() {}
-
-    public Worker(Integer id, String fullName, String category, String email, String password) {
-        this.id = id;
-        this.fullName = fullName;
-        this.category = category;
-        this.email = email;
-        this.password = password;
-    }
-
     public String password;
+
+//    public Worker() {}
+
+//    public Worker(Integer id, String fullName, String category, String email, String password) {
+//        this.id = id;
+//        this.fullName = fullName;
+//        this.category = category;
+//        this.email = email;
+//        this.password = password;
+//    }
+
+
 
 
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="workers_skill">
+        <item></item>
         <item>Programming</item>
         <item>Virtual Assistant</item>
     </string-array>

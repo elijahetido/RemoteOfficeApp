@@ -3,6 +3,7 @@ package com.etido.elijah.remoteoffice.Database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -32,15 +33,23 @@ public class CompanyWorkerDatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_COMPANY_EMAIL = "company_email";
     private static final String COLUMN_COMPANY_PASSWORD = "company_password";
 
-    private String CREATE_COMPANY_TABLE = "CREATE TABLE " + TABLE_COMPANY + "("
-            + COLUMN_COMPANY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_COMPANY_NAME + "TEXT,"
-            + COLUMN_COMPANY_CATEGORY + "TEXT," + COLUMN_COMPANY_EMAIL + "TEXT,"
-            + COLUMN_COMPANY_PASSWORD + "TEXT" + ")";
+    private String CREATE_COMPANY_TABLE = "CREATE TABLE " + TABLE_COMPANY
+            + " ( "
+            + COLUMN_COMPANY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_COMPANY_NAME + " TEXT,"
+            + COLUMN_COMPANY_CATEGORY + " TEXT, "
+            + COLUMN_COMPANY_EMAIL + " TEXT, "
+            + COLUMN_COMPANY_PASSWORD + " TEXT"
+            + " ) ";
 
-    private String CREATE_WORKER_TABLE = "CREATE TABLE " + TABLE_WORKER + "("
-            + COLUMN_WORKER_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + COLUMN_FULL_NAME + "TEXT,"
-            + COLUMN_WORKER_CATEGORY + "TEXT," + COLUMN_WORKER_EMAIL + "TEXT,"
-            + COLUMN_WORKER_PASSWORD + "TEXT" + ")";
+    private String CREATE_WORKER_TABLE = " CREATE TABLE " + TABLE_WORKER
+            + "("
+            + COLUMN_WORKER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_FULL_NAME + " TEXT, "
+            + COLUMN_WORKER_CATEGORY + " TEXT, "
+            + COLUMN_WORKER_EMAIL + " TEXT, "
+            + COLUMN_WORKER_PASSWORD + " TEXT"
+            + " ) ";
 
     private String DROP_WORKER_TABLE = "DROP TABLE IF EXISTS " + TABLE_WORKER;
     private String DROP_COMPANY_TABLE = "DROP TABLE IF EXISTS " + TABLE_COMPANY;
@@ -48,14 +57,19 @@ public class CompanyWorkerDatabaseHelper extends SQLiteOpenHelper {
 
     public CompanyWorkerDatabaseHelper(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        
     }
 
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_COMPANY_TABLE);
-        db.execSQL(CREATE_WORKER_TABLE);
+        try{
+            db.execSQL(CREATE_COMPANY_TABLE);
+            db.execSQL(CREATE_WORKER_TABLE);
+        }
+        catch(SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -85,7 +99,7 @@ public class CompanyWorkerDatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_COMPANY_EMAIL, company.email);
         values.put(COLUMN_COMPANY_PASSWORD, company.password);
 
-        db.insert(TABLE_WORKER,null, values);
+        db.insert(TABLE_COMPANY,null, values);
         db.close();
     }
 
@@ -208,10 +222,10 @@ public class CompanyWorkerDatabaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean checkWorker(String email, String password){
+
         String[] columns = {COLUMN_WORKER_ID};
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = COLUMN_WORKER_EMAIL + " = ?" + " AND "
-                + COLUMN_WORKER_PASSWORD + " = ? ";
+        String selection = COLUMN_WORKER_EMAIL + " = ? " + " AND " + COLUMN_WORKER_PASSWORD + " = ? ";
         String[] selectionArgs = {email, password};
 
         Cursor cursor = db.query(TABLE_WORKER,
@@ -231,15 +245,12 @@ public class CompanyWorkerDatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
-//    public Worker authenticate( Worker)
-
     public boolean checkCompany(String email, String password){
         String[] columns = {
                 COLUMN_COMPANY_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
-        String selection = COLUMN_COMPANY_EMAIL + " = ?" + " AND "
-                + COLUMN_COMPANY_PASSWORD + " = ? ";
+        String selection = COLUMN_COMPANY_EMAIL + " = ? " + " AND " + COLUMN_COMPANY_PASSWORD + " = ? ";
         String[] selectionArgs = {email, password};
 
         Cursor cursor = db.query(TABLE_COMPANY,
