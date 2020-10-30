@@ -3,16 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/company_jobs"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_work_24"
         android:title="Jobs"
         android:visible="true"
         app:showAsAction="always" />
     <item
+        android:id="@+id/company_workers"
         android:icon="@drawable/ic_baseline_people_24"
         android:title="Workers"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/company_messages"
         android:icon="@drawable/ic_baseline_message_24"
         android:title="Messages"
         app:showAsAction="always" />

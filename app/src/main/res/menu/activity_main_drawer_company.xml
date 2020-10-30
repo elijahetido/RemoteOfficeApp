@@ -14,4 +14,16 @@
             android:id="@+id/chats"
             android:title="Chats" />
     </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/company_settings"
+            android:title="Settings" />
+        <item
+            android:id="@+id/companyshare"
+            android:title="Share" />
+        <item
+            android:id="@+id/company_about"
+            android:title="About" />
+    </group>
 </menu>

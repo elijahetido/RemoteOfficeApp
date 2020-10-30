@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.etido.elijah.remoteoffice.DataModel.Worker;
 import com.etido.elijah.remoteoffice.Database.CompanyWorkerDatabaseHelper;
 import com.etido.elijah.remoteoffice.R;
 import com.google.android.material.snackbar.Snackbar;
@@ -38,7 +37,7 @@ public class LoginActivity extends AppCompatActivity{
             AlertDialog.Builder success = new AlertDialog.Builder (
                     this);
             ViewGroup viewGroup = findViewById (R.id.content);
-            View dialogView = LayoutInflater.from(this).inflate(R.layout.popup_window,
+            View dialogView = LayoutInflater.from(this).inflate(R.layout.signup_popup_window,
                     viewGroup,false);
             success.setView (dialogView);
             AlertDialog alertDialog = success.create();

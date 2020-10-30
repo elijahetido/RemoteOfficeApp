@@ -10,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.WorkerMainActivity"></activity>
-        <activity
-            android:name=".Activities.CompanyNavDrawer"
-            android:label="@string/title_activity_company_nav_drawer"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.CompanyMainActivity" />
         <activity
             android:name=".SplashActivity"
