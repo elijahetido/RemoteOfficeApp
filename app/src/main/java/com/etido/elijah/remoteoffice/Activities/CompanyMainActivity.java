@@ -5,22 +5,30 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
 
+import com.etido.elijah.remoteoffice.Fragments.CompanyJobsFragment;
+import com.etido.elijah.remoteoffice.Fragments.CompanyMessagesFragment;
+import com.etido.elijah.remoteoffice.Fragments.CompanyWorkersFragment;
 import com.etido.elijah.remoteoffice.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 public class CompanyMainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 //        ,View.OnClickListener
+    BottomNavigationView bottomNavigationView;
+    private CompanyJobsFragment companyJobsFragment;
+    private CompanyWorkersFragment companyWorkersFragment;
+    private CompanyMessagesFragment companyMessagesFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +45,40 @@ public class CompanyMainActivity extends AppCompatActivity
 
         NavigationView navigationView =  findViewById(R.id.company_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        bottomNavigationView = findViewById(R.id.company_bottom_nav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new
+                BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item){
+                    int id = item.getItemId();
+//
+                 if (id == R.id.company_jobs) {
+                    companyJobsFragment = new CompanyJobsFragment();
+                    OpenFragment(companyJobsFragment);
+                     return true;
+                 }
+                 else if (id == R.id.company_workers){
+                     companyWorkersFragment = new CompanyWorkersFragment();
+                     OpenFragment(companyWorkersFragment);
+//                     startActivity(new Intent(this, CompanyWorkers.class));
+                     return true;
+                 }
+                 else if (id == R.id.company_messages){
+                     companyMessagesFragment = new CompanyMessagesFragment();
+                     OpenFragment(companyMessagesFragment);
+                    return true;
+                    }
+
+                    return true;
+                } });
+    }
+
+    private void OpenFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.company_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 
     @Override
