@@ -24,7 +24,10 @@ public class LoginActivity extends AppCompatActivity{
     private TextView mSignUp;
     CompanyWorkerDatabaseHelper companyWorkerDatabaseHelper;
     private ConstraintLayout mConstraintLayout;
-
+    public static final String workerEmail = " ";
+    public static final String workerPassword = " ";
+    public static final String companyEmail = " ";
+    public static final String companyPassword = " ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,17 +87,20 @@ public class LoginActivity extends AppCompatActivity{
 //        }
 //    }
 
-    private void verifyData() {
+    public void verifyData() {
         String email = mEmail.getText().toString();
         String password = mPassword.getText().toString();
 
             if(companyWorkerDatabaseHelper.checkWorker(email, password)){
                 Intent workerIntent = new Intent(LoginActivity.this, WorkerMainActivity.class);
-                clearTextFields();
+                workerIntent.putExtra(workerEmail, email);
+//              workerIntent.putExtra(workerPassword, password);
                 startActivity(workerIntent);
+
             } else if (companyWorkerDatabaseHelper.checkCompany(email, password)){
                 Intent companyIntent = new Intent(LoginActivity.this, CompanyMainActivity.class);
-                clearTextFields();
+                companyIntent.putExtra(companyEmail, email);
+//                companyIntent.putExtra(companyPassword, password);
                 startActivity(companyIntent);
             } else {
                 Snackbar.make(mConstraintLayout," Login Unsuccessful",Snackbar.LENGTH_LONG).show();

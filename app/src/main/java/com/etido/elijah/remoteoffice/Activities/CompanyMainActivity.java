@@ -9,15 +9,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
+import com.etido.elijah.remoteoffice.Database.CompanyWorkerDatabaseHelper;
 import com.etido.elijah.remoteoffice.Fragments.CompanyJobsFragment;
 import com.etido.elijah.remoteoffice.Fragments.CompanyMessagesFragment;
 import com.etido.elijah.remoteoffice.Fragments.CompanyWorkersFragment;
+import com.etido.elijah.remoteoffice.Activities.LoginActivity;
 import com.etido.elijah.remoteoffice.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -29,6 +35,11 @@ public class CompanyMainActivity extends AppCompatActivity
     private CompanyJobsFragment companyJobsFragment;
     private CompanyWorkersFragment companyWorkersFragment;
     private CompanyMessagesFragment companyMessagesFragment;
+    CompanyWorkerDatabaseHelper companyWorkerDatabaseHelper;
+    Image companyImage;
+    TextView companyName;
+    TextView companyEmail;
+    String companyEmailHolder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +47,7 @@ public class CompanyMainActivity extends AppCompatActivity
         setContentView(R.layout.company_dashboard_activity);
         Toolbar toolbar = findViewById(R.id.company_toolbar);
         setSupportActionBar(toolbar);
+        companyWorkerDatabaseHelper = new CompanyWorkerDatabaseHelper(this);
 
         DrawerLayout companyDrawer = findViewById(R.id.company_drawer);
         ActionBarDrawerToggle companytoggle = new ActionBarDrawerToggle(
@@ -46,35 +58,46 @@ public class CompanyMainActivity extends AppCompatActivity
         NavigationView navigationView =  findViewById(R.id.company_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        bottomNavigationView = findViewById(R.id.company_bottom_nav);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new
-                BottomNavigationView.OnNavigationItemSelectedListener() {
-                @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item){
-                    int id = item.getItemId();
-//
-                 if (id == R.id.company_jobs) {
-                    companyJobsFragment = new CompanyJobsFragment();
-                    OpenFragment(companyJobsFragment);
-                     return true;
-                 }
-                 else if (id == R.id.company_workers){
-                     companyWorkersFragment = new CompanyWorkersFragment();
-                     OpenFragment(companyWorkersFragment);
-//                     startActivity(new Intent(this, CompanyWorkers.class));
-                     return true;
-                 }
-                 else if (id == R.id.company_messages){
-                     companyMessagesFragment = new CompanyMessagesFragment();
-                     OpenFragment(companyMessagesFragment);
-                    return true;
-                    }
+        companyJobsFragment = new CompanyJobsFragment();
+        openCompanyFragment(companyJobsFragment);
 
-                    return true;
-                } });
+        bottomNavigationView = findViewById(R.id.company_bottom_nav);
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+        int id = item.getItemId();
+//
+     if (id == R.id.company_jobs) {
+        companyJobsFragment = new CompanyJobsFragment();
+        openCompanyFragment(companyJobsFragment);
+         return true;
+     }
+     else if (id == R.id.company_workers){
+         companyWorkersFragment = new CompanyWorkersFragment();
+         openCompanyFragment(companyWorkersFragment);
+//                     startActivity(new Intent(this, CompanyWorkers.class));
+         return true;
+     }
+     else if (id == R.id.company_messages){
+         companyMessagesFragment = new CompanyMessagesFragment();
+         openCompanyFragment(companyMessagesFragment);
+        return true;
+        }
+
+        return true;
+    });
+        companyNameEmail();
+
     }
 
-    private void OpenFragment(Fragment fragment) {
+    private void companyNameEmail() {
+        Intent intent = getIntent();
+        companyEmailHolder = intent.getStringExtra(LoginActivity.companyEmail);
+        NavigationView navigationView =  findViewById(R.id.company_nav_view);
+        View headerView = navigationView.getHeaderView(0);
+        companyEmail = headerView.findViewById(R.id.company_email_header);
+        companyEmail.setText(companyEmailHolder);
+    }
+
+    private void openCompanyFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.company_container, fragment);
         transaction.addToBackStack(null);
@@ -89,6 +112,7 @@ public class CompanyMainActivity extends AppCompatActivity
     @Override
     protected void onResume() {
         super.onResume ();
+//        companyNameEmail();
         openCompanyDrawer();
     }
 
